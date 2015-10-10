@@ -10,4 +10,34 @@ pyA20
 https://pypi.python.org/pypi/pyA20
 
 install ::
-python setup.py install 
+	
+	python setup.py install 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
