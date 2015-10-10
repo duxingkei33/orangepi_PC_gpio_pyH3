@@ -33,8 +33,8 @@ __email__ = "support@olimex.com"
             {   "POWER_LED",  SUNXI_GPL(10),  1   },
             {   "STATUS_LED",  SUNXI_GPA(15),  2   },
 """
-led = connector.LEDp1    # This is the same as port.POWER_LED
-#led = connector.LEDp2    # This is the same as port.STATUS_LED
+#led = connector.LEDp1    # This is the same as port.POWER_LED
+led = connector.LEDp2    # This is the same as port.STATUS_LED
 #led = port.POWER_LED
 #led = port.STATUS_LED
 
