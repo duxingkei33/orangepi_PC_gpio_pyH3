@@ -51,28 +51,8 @@ gpio_t gpio[] = {
             {   "PA12",  SUNXI_GPA(12),  3   },
             {   "PA11",  SUNXI_GPA(11),  5   },
             {   "PA6",  SUNXI_GPA(6),  7   },
- /*
- thanks  nopnop2002 
- /orangepi_PC_gpio_pyH3/pyA20/gpio/mapping.h
-
-It is a mistake.
-{ "PA0", SUNXI_GPA(0), 11 },
-{ "PA1", SUNXI_GPA(1), 13 },
-
-It is right.
-{ "PA1", SUNXI_GPA(1), 11 },
-{ "PA0", SUNXI_GPA(0), 13 },
-
-sorry My poor English
-
-
             {   "PA0",  SUNXI_GPA(0),   11 },
             {   "PA1",  SUNXI_GPA(1),   13   },
-            
- */           
-            {   "PA1",  SUNXI_GPA(1),   11 },
-            {   "PA0",  SUNXI_GPA(0),   13   },
-
             {   "PA3",  SUNXI_GPA(3),   15   },
             {   "PC0",  SUNXI_GPC(0),   19   },           
 	    {   "PC1",  SUNXI_GPC(1),  21   },
