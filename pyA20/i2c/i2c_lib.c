@@ -53,10 +53,10 @@ int i2c_close(int fd) {
     return (close(fd));
 }
 
-int i2c_send(int fd, uint8_t *buffer, uint8_t num_bytes) {
+int i2c_send(int fd, uint8_t *buffer, uint32_t num_bytes) {
     return (write(fd, buffer, num_bytes));
 }
 
-int i2c_read(int fd, uint8_t *buffer, uint8_t num_bytes) {
+int i2c_read(int fd, uint8_t *buffer, uint32_t num_bytes) {
     return (read(fd, buffer, num_bytes));
 }
