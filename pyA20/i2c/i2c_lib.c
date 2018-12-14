@@ -60,3 +60,23 @@ int i2c_send(int fd, uint8_t *buffer, uint32_t num_bytes) {
 int i2c_read(int fd, uint8_t *buffer, uint32_t num_bytes) {
     return (read(fd, buffer, num_bytes));
 }
+
+extern int i2c_send_onestop(int fd, uint8_t dev_addr,  uint8_t *buffer, uint32_t num_bytes)
+{
+	struct i2c_msg messages[1];
+	struct i2c_rdwr_ioctl_data packet;
+
+	messages[0].addr = dev_addr;
+	messages[0].flags = 0; // 0:write 1:read
+	messages[0].len = num_bytes;
+	messages[0].buf = buffer;
+
+	packet.msgs = messages;
+	packet.nmsgs = 1;
+
+	if (ioctl(fd, I2C_RDWR, &packet) < 0)
+	{
+		return 1;
+	}
+	return 0;
+}

@@ -28,5 +28,6 @@ extern int i2c_open(char *device, uint8_t address);
 extern int i2c_close(int fd);
 extern int i2c_send(int fd, uint8_t *buffer, uint32_t num_bytes);
 extern int i2c_read(int fd, uint8_t *buffer, uint32_t num_bytes);
+extern int i2c_send_onestop(int fd, uint8_t dev_addr, uint8_t *buffer, uint32_t num_bytes);
 
 #endif
