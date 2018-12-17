@@ -75,7 +75,7 @@ sorry My poor English
 
             {   "PA3",  SUNXI_GPA(3),   15   },
             {   "PC0",  SUNXI_GPC(0),   19   },           
-	    {   "PC1",  SUNXI_GPC(1),  21   },
+    	    {   "PC1",  SUNXI_GPC(1),  21   },
             {   "PC2",  SUNXI_GPC(2),  23   },
             {   "PA19",  SUNXI_GPA(19),  27   },
             {   "PA7",  SUNXI_GPA(7),   29 },
@@ -86,6 +86,8 @@ sorry My poor English
 //
             {   "PA13",  SUNXI_GPA(13),  8   },
             {   "PA14",  SUNXI_GPA(14),  10  },
+			{   "PA15",  SUNXI_GPA(15),  2   },
+			{   "PA16",  SUNXI_GPA(16),  0   },
             {   "PD14",  SUNXI_GPD(14),   12 },
             {   "PC4",  SUNXI_GPC(4),   16   },
             {   "PC7",  SUNXI_GPC(7),   18   },
@@ -98,7 +100,7 @@ sorry My poor English
             {   "PG6",  SUNXI_GPG(6),   38   },
             {   "PG7",  SUNXI_GPG(7),   40   },
             {
-                {   0,  0,  0}
+            {   0,  0,  0}
             },
         }
     },
