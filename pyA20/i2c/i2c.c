@@ -138,6 +138,49 @@ static PyObject* py_open(PyObject* self, PyObject* args) {
 }
 
 /**
+ * Write bytes to I2C slave device with just only one stop
+ * 
+ * @param self
+ * @param args bytes to send
+ * @return none
+ */
+static PyObject* py_write_onestop(PyObject* self, PyObject* args) {
+
+    PyObject *list = 0;
+    PyObject *item = 0;
+
+    /* Parse arguments */
+    if (!PyArg_ParseTuple(args, "O!", &PyList_Type, &list)) {
+        return NULL;
+    }
+
+    /* Get length of the list */
+    uint32_t n = PyList_Size(list);
+
+
+    /* Allocate memory */
+    uint8_t *buffer = (uint8_t*)malloc(n * sizeof(uint8_t));
+    
+    /* Populate output buffer */
+    uint32_t i;
+    for (i = 0; i < n; i++) {
+        item = PyList_GetItem(list, i);
+        buffer[i] = (unsigned char) PyInt_AsLong(item);
+    }
+
+    /* Send data */
+    if (i2c_send_onestop(fd, address, buffer, n) < 0) {
+        return PyErr_SetFromErrno(PyExc_IOError);
+    }
+    
+    /* Do cleanup */
+    free(buffer);
+    Py_DECREF(list);
+//    Py_DECREF(item);
+    
+    Py_RETURN_NONE;
+}
+/**
  * Write bytes to I2C slave device
  * 
  * @param self
@@ -155,14 +198,14 @@ static PyObject* py_write(PyObject* self, PyObject* args) {
     }
 
     /* Get length of the list */
-    uint8_t n = PyList_Size(list);
+    uint32_t n = PyList_Size(list);
 
 
     /* Allocate memory */
     uint8_t *buffer = (uint8_t*)malloc(n * sizeof(uint8_t));
     
     /* Populate output buffer */
-    uint8_t i;
+    uint32_t i;
     for (i = 0; i < n; i++) {
         item = PyList_GetItem(list, i);
         buffer[i] = (unsigned char) PyInt_AsLong(item);
@@ -203,6 +246,7 @@ static PyMethodDef module_methods[] = {
     {"close", py_close, METH_NOARGS, "Close file descriptor"},
     {"read", py_read, METH_VARARGS, "Read n bytes from I2C bus"},
     {"write", py_write, METH_VARARGS, "Write n bytes to I2C bus"},
+    {"writeOneStop", py_write_onestop, METH_VARARGS, "Write n bytes to I2C bus with just one stop"},
     {NULL, NULL, 0, NULL}
 };
 
